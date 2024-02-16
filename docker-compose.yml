@@ -1,0 +1,121 @@
+version: "3.8"
+
+services:
+  angular:
+    image: frontend-img
+    container_name: frontend-con
+    ports:
+      - "4200:80"
+    networks:
+      - mynetwork
+  mysql-db-user:
+    image: mysql
+    container_name: mysql-userdb
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: Sziszike*22
+      MYSQL_DATABASE: user_db
+    ports:
+      - '3310:3306'
+    networks:
+      - mynetwork
+
+  mysql-db-device:
+    image: mysql
+    container_name: mysql-devicedb
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: Sziszike*22
+      MYSQL_DATABASE: device_db
+    ports:
+      - '3309:3306'
+    networks:
+      - mynetwork
+    
+  mysql-db-monitoring:
+    image: mysql
+    container_name: mysql-monitoringdb
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: Sziszike*22
+      MYSQL_DATABASE: monitoring_db
+    ports:
+      - '3311:3306'
+    networks:
+      - mynetwork
+
+  devices:
+    image: device-img
+    container_name: devices
+    build:
+      context: .
+    ports:
+      - '8081:8081'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db-device:3306/device_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Sziszike*22
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - mysql-db-device
+    networks:
+      - mynetwork
+  
+  chat:
+    image: chat-img
+    container_name: chat
+    build:
+      context: .
+    ports:
+      - '8083:8083'
+
+  users:
+    image: user-img
+    container_name: users
+    build:
+      context: .
+    ports:
+      - '8080:8080'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db-user:3306/user_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Sziszike*22
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - mysql-db-user
+      - devices
+    networks:
+      - mynetwork
+  
+  monitoring:
+    image: monitoring-img
+    container_name: monitoring
+    build:
+      context: .
+    ports:
+      - '8082:8082'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db-monitoring:3306/monitoring_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Sziszike*22
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - mysql-db-monitoring
+      - devices
+    networks:
+      - mynetwork
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+networks:
+  mynetwork:

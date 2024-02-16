@@ -1,0 +1,56 @@
+<!-- <div class="container">
+    <h2>Associate Users and Devices</h2>
+    <div class="form-group">
+      <label for="userIdSelect">User ID:</label>
+      <select #user id="userIdSelect" class="form-control">
+        
+        <option  *ngFor="let userID of userIds" [value]="userID" [(ngModel)]="selectedUserId">
+          {{ userID }}
+        </option>
+       
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="deviceIdSelect">Device ID:</label>
+      <select #dev >
+       
+        <option  *ngFor="let device of deviceIds" [value]="device" [(ngModel)]="selectedDeviceId">
+          {{ device }}
+        </option>
+        
+      </select>
+    </div>
+    <button class="btn btn-primary" (click) = "associateUserToDevice(dev.value, user.value)">Associate</button>
+
+    <div *ngIf="successMsg" class="success-message">
+      {{ successMsg }}
+    </div>
+
+    <div *ngIf="errorMsg" class="error-message">
+        {{ errorMsg }}
+    </div>
+  </div>
+   -->
+
+   <!DOCTYPE html>
+<html>
+<head>
+    <title>Asociere User-Device</title>
+</head>
+<body>
+  <div style="margin-top: 200px;">
+    <h2>Asociere User-Device</h2>
+    <form>
+        <div>
+            <label for="userId">User ID:</label>
+            <input type="number" id="userId" name="userId" required [(ngModel)]="selectedUserId">
+        </div>
+        <div>
+            <label for="deviceId">Device ID:</label>
+            <input type="number" id="deviceId" name="deviceId" required [(ngModel)]="selectedDeviceId">
+        </div>
+        <button type="button" id="associateButton" (click)="associateUserToDevice()">Asociere</button>
+    </form>
+  </div>
+</body>
+</html>

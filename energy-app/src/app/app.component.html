@@ -1,0 +1,26 @@
+<router-outlet></router-outlet>
+<html>
+<head>
+    <title>Navbar</title>
+</head>
+<body>
+  <div class="navbar">
+    <button *ngIf="isLoggedIn()==false" class="navbar-buttons" (click)="goToPage('Homepage')">EnergyApp</button>
+    <div class="nav-links">
+        <button *ngIf="isLoggedIn()==false" class="navbar-buttons" (click)="goToPage('Login')">Login</button>
+        <button *ngIf="isLoggedIn()==false" class="navbar-buttons" (click)="goToPage('Register')">Register</button>
+        <button *ngIf="isLoggedIn()==true && (isAuthorizedA()==true || isAuthorizedC()==true)" class="navbar-buttons" (click)="goToPage('Homepage')">Log Out</button>
+        <button *ngIf="isAdmin()==true && isAuthorizedA()==true" class="navbar-buttons" (click)="goToPage('Create-Device')">Create device</button>
+        <button *ngIf="isAdmin()==true && isAuthorizedA()==true" class="navbar-buttons" (click)="goToPage('Associate-Device')">Associate device to user</button>
+        <button *ngIf="isAdmin()==true && isAuthorizedA()==true" class="navbar-buttons" (click)="goToPage('Admin-Operations')">Admin operations</button>
+        <!-- <button *ngIf="isLoggedIn()==true && (isAuthorizedA()==false || isAuthorizedC()==false)" class="navbar-buttons" (click)="goToPage('Homepage')">Return to homepage</button> -->
+        <button *ngIf="isLoggedIn()==true && isAdmin()==true && isAuthorizedA()==true" class="navbar-buttons" (click)="goToPage('Chat')">Chat with clients</button>
+        <button *ngIf="isLoggedIn()==true && isAdmin()==false" class="navbar-buttons" (click)="goToPage('Client-Chat')">Chat with admin</button>
+        
+    </div>
+</div>
+
+
+
+</body>
+</html>

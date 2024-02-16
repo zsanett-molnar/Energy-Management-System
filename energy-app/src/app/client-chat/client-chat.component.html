@@ -1,0 +1,29 @@
+<div class="chat-container">
+  <div class="chat-box" id="chat-box">
+    <!-- Mesaje -->
+    <div class="message" *ngFor="let message of messages">
+      <div class="message-bubble" [ngClass]="{'sent-message': message.sender === currentClient, 'received-message': message.sender !== currentClient}">
+        <ng-container *ngIf="message.sender !== currentClient">
+          <!-- Display user avatar for messages from others -->
+          <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User Avatar" class="avatar">
+        </ng-container>
+        <div class="content-container">
+          <div class="text-container">
+            <div>
+              <p class="message-text">{{ message.information }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Icoana "SEEN" în partea de jos a chat boxului -->
+  <img *ngIf="displaySeenNotification==true"  class="seen-icon" src="https://static.thenounproject.com/png/3388044-200.png">
+  <p *ngIf="displayTypingNotification"   style="margin-left: 500px;">Admin is typing..</p>
+  <!-- Containerul cu inputurile -->
+  <div class="input-container">
+    <input [(ngModel)]="newMessage" placeholder="Type your message..." class="input-message" (input)="onInputStart()" (focus)="onInputFocus()" (keyup.enter)="sendMessage()">
+    <button (click)="sendMessage()" class="send-button">Send</button>
+  </div>
+</div>
+<p *ngIf="displayTypingNotification==true">CLIENT IS TYPING</p>

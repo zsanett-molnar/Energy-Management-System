@@ -1,0 +1,35 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+/* Stil pentru antetul tabelului */
+table th {
+    background-color: #b2cb10;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Stil pentru rândurile tabelului */
+table tr {
+    border-bottom: 1px solid #ccc;
+}
+
+/* Stil pentru celulele tabelului */
+table td {
+    padding: 10px;
+}
+
+.error-message {
+    margin-top: 400px;
+    margin-left: 600px;
+    width: 300px;
+    text-align: center;
+    background-color: rgb(249, 131, 131);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+} 

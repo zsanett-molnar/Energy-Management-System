@@ -1,0 +1,23 @@
+
+<div style="display: flex; align-items: center; margin-top: 100px;">
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <button style="margin-left: 10px;"  (click)="filterMeasurementsByDate()">Create chart</button>
+    </div>
+
+    
+</div>
+
+<div class="chart-container">
+    <canvas  id="MyChart" >{{ chart }}</canvas>
+</div>

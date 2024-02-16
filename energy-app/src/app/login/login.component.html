@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autentificare și Înregistrare</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Autentificare</h2>
+        <form action="login.php" method="POST">
+            <div class="form-group">
+                <label for="username">Nume de utilizator:</label>
+                <input type="text" id="username" name="username" required [(ngModel)]="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Parolă:</label>
+                <input type="password" id="password" name="password" required required [(ngModel)]="password">
+            </div>
+            <button type="submit" class="btn" (click)="login()">Autentificare</button>
+        </form>
+
+            <div *ngIf="successMsg" class="success-message">
+                {{ successMsg }}
+            </div>
+        
+            <div *ngIf="errorMsg" class="error-message">
+                {{ errorMsg }}
+            </div>
+       
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Device List</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 style="margin-top: 50px;"> Device table:</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Device ID</th>
+                        <th>Description</th>
+                        <th>Address</th>
+                        <th>Max Consumption</th>
+                        <th>User ID</th>
+                        <th>Action</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let device of devices">
+                        <!-- <td>{{ device && device.userID ? device.userID : '' }}</td>  -->
+                        <td>{{ device.id }}</td>
+                        <td> <ng-container *ngIf="isEditingDevice; else displayMode1">
+                            <input type="text" [(ngModel)]="device.description" class="form-control">
+                          </ng-container>
+                          <ng-template #displayMode1>
+                            {{ device.description }}
+                          </ng-template>
+                        </td>
+                        <td> <ng-container *ngIf="isEditingDevice; else displayMode2">
+                            <input type="text" [(ngModel)]="device.address" class="form-control">
+                          </ng-container>
+                          <ng-template #displayMode2>
+                            {{ device.address }}
+                          </ng-template>
+                        </td>
+                        <td> <ng-container *ngIf="isEditingDevice; else displayMode3">
+                            <input type="text" [(ngModel)]="device.maxConsumption" class="form-control">
+                          </ng-container>
+                          <ng-template #displayMode3>
+                            {{ device.maxConsumption }}
+                          </ng-template>
+                        </td>
+                        
+                        <td>
+                            <ng-container *ngIf="isEditingDevice; else displayMode4">
+                              <input type="text" [(ngModel)]="device.userID" class="form-control">
+                            </ng-container>
+                            <ng-template #displayMode4>
+                              {{ device.userID }}
+                            </ng-template>
+                        </td>
+                        <td>
+                            <button  *ngIf="isEditingModeOn()==false" class="btn btn-info" (click)="setEditingMode()">Update</button>
+                            <button *ngIf="isEditingModeOn()==false" class="btn btn-danger ml-2" (click)="deleteDeviceById(device.id)">Delete</button>
+                            <button *ngIf="isEditingModeOn()==true" class="btn btn-danger ml-2" (click) = "updateDevice(device.id,device.description,device.address,device.maxConsumption,device.userID?.userID)">Save</button>
+                            <button *ngIf="isEditingModeOn()==true" class="btn btn-danger ml-2" (click)="cancelEditing()">Cancel</button>
+                        </td> 
+                        
+                    </tr>
+                </tbody>
+            </table>
+
+            
+
+            <h1 style="margin-top: 50px;"> Users table:</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Role</th>
+                        <th>Username</th>
+                        <th>Password</th>                     
+                        <th>Action</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{ user.userID }}</td>
+                        <td> <ng-container *ngIf="isEditingUser; else displayMode4">
+                            <input type="text" [(ngModel)]="user.role" class="form-control">
+                          </ng-container>
+                          <ng-template #displayMode4>
+                            {{ user.role }}
+                          </ng-template>
+                        </td>
+                        <td> <ng-container *ngIf="isEditingUser; else displayMode5">
+                            <input type="text" [(ngModel)]="user.username" class="form-control">
+                          </ng-container>
+                          <ng-template #displayMode5>
+                            {{ user.username }}
+                          </ng-template>
+                        </td>
+                        <td> <ng-container *ngIf="isEditingUser; else displayMode6">
+                            <input type="text" [(ngModel)]="user.password" class="form-control">
+                          </ng-container>
+                          <ng-template #displayMode6>
+                            {{ user.password }}
+                          </ng-template>
+                        </td>
+                        
+                    
+                        <td>
+                           
+                            <button  *ngIf="isEditingUserModeOn()==false" class="btn btn-info" (click)="setEditingModeUsers()">Update</button>
+                            <button *ngIf="isEditingUserModeOn()==true" class="btn btn-danger ml-2" (click) = "updateUser(user.userID,user.role,user.username,user.password)">Save</button>
+                            <button *ngIf="isEditingUserModeOn()==true" class="btn btn-danger ml-2" (click)="cancelEditing()">Cancel</button>
+                            <button *ngIf="isEditingUserModeOn()==false" class="btn btn-danger ml-2" (click)="deleteUser(user.userID)">Delete</button>
+                        </td> 
+
+                        
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+  </div>
+
+
+    </div>
+
+</div>
+<!-- <p *ngIf="isAuthorized()==false" class="error-message"> Nu sunteti autorizati!</p> -->

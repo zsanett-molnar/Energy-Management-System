@@ -1,0 +1,50 @@
+/* Stil pentru containerul formularului */
+.container {
+    margin: 20px auto;
+    margin-top: 160px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px; /* Ajustați lățimea containerului la preferințele dvs. */
+  }
+  
+  /* Stil pentru label-uri */
+  .form-group label {
+    display: block; /* Faceți labelurile să fie afișate pe linii separate */
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Stil pentru dropdown-uri */
+  .form-control {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Stil pentru buton */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+  .success-message {
+    text-align: center;
+    background-color: rgb(153, 239, 107);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+  

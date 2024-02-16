@@ -1,0 +1,142 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 60px;
+    
+}
+
+/* Stil pentru antetul tabelului */
+table th {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Stil pentru rândurile tabelului */
+table tr {
+    border-bottom: 1px solid #ccc;
+}
+
+/* Stil pentru celulele tabelului */
+table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.error-message {
+    margin-top: 400px;
+    margin-left: 600px;
+    width: 300px;
+    text-align: center;
+    background-color: rgb(249, 131, 131);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+} 
+
+
+/*SOCKET MESSAGE*/
+.icon {
+    max-width: 60px;
+    max-height: 60px;
+}
+
+div {
+    font-family: 'Roboto', sans-serif;
+}
+
+.card {
+    width: 100%;
+    max-width: 310px;
+    height: 70px;
+    background: #353535;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    backdrop-filter: blur(10px);
+    transition: 0.5s ease-in-out;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.img {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    border-radius: 10px;
+    background: linear-gradient(#d7cfcf, #9198e5);
+}
+
+.card:hover>.img {
+    transition: 0.5s ease-in-out;
+    background: linear-gradient(#9198e5, #712020);
+}
+
+.textBox {
+    width: calc(100% - 90px);
+    margin-left: 10px;
+    color: white;
+    font-family: 'Poppins' sans-serif;
+}
+
+.textContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.span {
+    font-size: 10px;
+}
+
+.h1 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.detail {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+#popup-container {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+#close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.container2 {
+    width: 300px;
+    margin: 180px auto;
+}
+
+.notification-message {
+    text-align: center;
+    background-color: rgb(249, 131, 131);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+}

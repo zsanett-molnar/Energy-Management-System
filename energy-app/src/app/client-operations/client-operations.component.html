@@ -1,0 +1,41 @@
+<div *ngIf="isAuthorized()==true" class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Device List</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Device ID</th>
+                        <th>Description</th>
+                        <th>Address</th>
+                        <th>Max Consumption</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let device of devices">
+                        <td>{{ device.id }}</td>
+                        <td>{{ device.description }}</td>
+                        <td>{{ device.address }}</td>
+                        <td>{{ device.maxConsumption }}</td>
+                        <td>
+                            <button (click)="goToPage('Chart', device.id)">View Chart</button> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<p *ngIf="isAuthorized()==false" class="error-message"> Nu sunteti autorizati!</p>
+
+<div *ngIf="isDisplayOn()==true" class="container2">
+    <div class="notification-message">
+        <p>Max consumption exceeded!</p>
+    </div>
+</div>
